@@ -18,8 +18,17 @@ def pmt(rate, nper, pv)
   # Your code to implement the method goes here.
   # You shouldn't have to write or change code anywhere else.
   # =========================================================
+  full_rate=1+rate.to_f
+  compounded_rate=full_rate**nper
+  top_line=pv*rate*compounded_rate.to_f
+  bottom_line=(compounded_rate-1)**(-1)
+
+  return top_line*bottom_line
 
 end
+
+the_payment = pmt(0.0404/12, 60, 30000)
+puts "Your monthly payment will be $#{the_payment.round(2)}."
 
 # Example usage of the method is below. Uncomment to test your pmt method,
 #   and once you have successfully defined it, re-comment them (before
